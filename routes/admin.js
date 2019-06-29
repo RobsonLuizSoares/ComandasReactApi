@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/users')
+const Clients = 
 
 router.get('/', (req, res) => {
   res.send({message: "Tudo certo com o GET Admin"})
