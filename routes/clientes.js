@@ -14,25 +14,32 @@ router.get('/list', (req, res) => {
 })
 
 router.post('/novo', (req, res) => {
-  const { name, phone, email } = req.body
+  const { name } = req.body
 
-  
-  Clients.findOne({phone}, (err, data) => {
+  if (!name  ) {
+    return res.send({ error: 'Dados Insuficientes para criar Cliente!' })
+  }
+  User.findOne({nome}, (err, data) => {
     if(err) {
-      res.send({error: 'Erro ao buscar usuário'})
+      res.send({error: 'Erro ao buscar cliente'})
     }
     if(data) {
-      res.send({ error: 'telefone já registrado'})
+      res.send({ error: 'Cliente já registrado'})
     }
 
     Clients.create(req.body, (err, data) => {
       if(err) {
-        res.send({error: 'Erro ao cadastrar Cliente'})
+        res.send({error: 'Erro ao criar Cliente'})
       }
+      
+      const client = new Clients (req.body)
+        client.save()
 
       return res.send(data)
-      })
+    })
   })
+
+  
 })
 
 module.exports = router
