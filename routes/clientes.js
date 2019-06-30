@@ -16,9 +16,7 @@ router.get('/list', (req, res) => {
 router.post('/novo', (req, res) => {
   const { name, phone, email } = req.body
 
-  if (!name || !phone || !email ) {
-    return res.send({ error: 'Dados Insuficientes para Cadastro de Cliente!' })
-  }
+  
   Clients.findOne({phone}, (err, data) => {
     if(err) {
       res.send({error: 'Erro ao buscar usuário'})
