@@ -38,12 +38,12 @@ app.use(express.static(path.resolve(__dirname, 'public')))
 const indexRoute = require('./routes/index')
 const usersRoute = require('./routes/users')
 const adminRoute = require('./routes/admin')
-const clientsRoute = require('./routes/clients')
+const clientsRoute = require('./routes/clientes')
 
 app.use('/', indexRoute)
 app.use('/users', usersRoute)
 app.use('/admin', adminRoute)
-app.use('/clients', clientsRoute)
+app.use('/clientes', clientsRoute)
 
 //Mongo
 
